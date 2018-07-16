@@ -8,23 +8,21 @@ function load()
 	canvas = document.getElementById('canvas');
 	ctx = canvas.getContext('2d');
 	
-  init();
+  	init();
 }
 
 
 function init()
 {
-
 	start();
-
-  run();
-  repaint();
+  	run();
+  	repaint();
 }
 
 function repaint()
 {
-  window.requestAnimationFrame(repaint);
-  paint();
+  	window.requestAnimationFrame(repaint);
+  	paint();
 }
 
 function paint()
@@ -35,5 +33,5 @@ function paint()
 function run()
 {
 	update();
-  setTimeout(run, 33);
+  	setTimeout(run, 33);
 }

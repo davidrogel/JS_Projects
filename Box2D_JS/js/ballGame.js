@@ -167,8 +167,8 @@ function createNewBox(type, x, y, w, h, rotation, conditions, customTag, sensor)
 
 function repaint()
 {
-  window.requestAnimationFrame(repaint);
-  paint();
+  	window.requestAnimationFrame(repaint);
+  	paint();
 }
 
 function paint()
@@ -321,7 +321,8 @@ var timeStep = 1/60;
 var velocityIterations = 8;
 var positionIterations = 3;
 
-function animate(){
+function animate()
+{
 	world.Step(timeStep,velocityIterations,positionIterations);
 	world.ClearForces();
 
@@ -415,9 +416,7 @@ function movimientoPlayer1()
 		salto1 = false;
 	}
 
-
 	player01.SetLinearVelocity(playerVelocity1);
-
 }
 
 function movimientoPlayer2()
@@ -446,7 +445,6 @@ function movimientoPlayer2()
 
 function resetGOL()
 {
-
 	ball.SetLinearVelocity(new b2Vec2(0,0));
 	player01.SetLinearVelocity(new b2Vec2(0,0));
 	player02.SetLinearVelocity(new b2Vec2(0,0));

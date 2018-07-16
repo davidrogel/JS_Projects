@@ -49,15 +49,15 @@ function setMap(map)
 	{
 		for(var j = 0; j < map[0].length; j++)
 		{
-      switch(map[i][j])
-      {
-        case 0:
-          espacio.push(new Rectangle(64 + j * w,64 + i * w, w, w));
-        break;
+		    switch(map[i][j])
+		    {
+		        case 0:
+		        	espacio.push(new Rectangle(64 + j * w,64 + i * w, w, w));
+		        break;
 
-        case 1: // Marco Horizontal Sup
-          bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", 0, w * 6, w, w));
-        break;
+		        case 1: // Marco Horizontal Sup
+		        	bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", 0, w * 6, w, w));
+		        break;
 
 				case 2: // Marco Vertical Izq
 					bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w, w * 6, w, w));
@@ -71,18 +71,18 @@ function setMap(map)
 					bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 6, w * 6, w, w));
 				break;
 
-        case 3: // Bombas
-          bombas.push(new Rectangle(64 + j * w,64 +  i * w, w, w, "./img/bombjackX2.png", w, w * 4, w, w));
-        break;
+		        case 3: // Bombas
+		          bombas.push(new Rectangle(64 + j * w,64 +  i * w, w, w, "./img/bombjackX2.png", w, w * 4, w, w));
+		        break;
 
 				case 5: // Jack
-          pj = new Rectangle(64 + j * w, 64 + i * w, w - 1, w - 1, "./img/bombjackX2.png", jackClipX, jackClipY, w, w);
-          posReset = {x: 64 + j * w, y: 64 + i * w};
-          pj.vx = 0;
-          pj.vy = 0;
-          pj.dir = {x:0, y:0};
+			    	pj = new Rectangle(64 + j * w, 64 + i * w, w - 1, w - 1, "./img/bombjackX2.png", jackClipX, jackClipY, w, w);
+			    	posReset = {x: 64 + j * w, y: 64 + i * w};
+			    	pj.vx = 0;
+			    	pj.vy = 0;
+			    	pj.dir = {x:0, y:0};
 					pj.powered = false;
-        break;
+		        break;
 
 				case 6: // Esquina Inferior Izq
 					bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 2, w * 6, w, w));
@@ -99,7 +99,7 @@ function setMap(map)
 				case 9: // Esquina Inferior Der
 					bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 3, w * 6, w, w));
 				break;
-      }
+		    }
 		}
 	}
 
@@ -117,6 +117,7 @@ function escenaGame()
 	{
 		bloques[i].draw(ctx);
 	}
+
 	for(var i = 0; i < bombas.length; i++)
 	{
 		bombas[i].draw(ctx);
@@ -137,9 +138,11 @@ function escenaGame()
 			enemigosV2[i].draw(ctx);
 		}
 	}
+
 	if(invulnerable)
 	{
 		tiempoInvulnerable += 1;
+
 		if(tiempoInvulnerable % 2 == 0)
 			pj.draw(ctx);
 
@@ -167,7 +170,6 @@ function escenaGame()
 
 function escenaMenu()
 {
-
 	ctx.font = '16px Arial';
 	ctx.fillStyle = 'white';
 	ctx.textAlign = 'center';
@@ -192,6 +194,7 @@ function escenaMenu()
 		ctx.fillText("Pulsa Enter Para Empezar", canvas.width / 2, canvas.height / 2 + 64);
 		ctx.fillText("Pulsa i Para Info",  canvas.width / 2, canvas.height / 2 + w * 3);
 	}
+
 	logo.draw(ctx);
 }
 
@@ -213,7 +216,7 @@ function escenaScore()
 
 function draw()
 {
-  ctx.fillStyle = 'black';
+  	ctx.fillStyle = 'black';
 	ctx.fillRect(0,0,canvas.width,canvas.height);
 
 	switch(currentScene)
@@ -251,7 +254,7 @@ function sceneGameUpdate()
 	colisionConPower();
 	powerJack();
 	generarExplosion();
-  movimiento();
+  	movimiento();
 	animacionesJack();
 	animacionesEnem();
 	animacionesBombas();
@@ -265,6 +268,7 @@ function sceneGameUpdate()
 function sceneMenuUpdate()
 {
 	end.pause();
+
 	if(instrucciones)
 	{
 		if(teclaPulsada === KEY.I) instrucciones = false;
@@ -275,7 +279,7 @@ function sceneMenuUpdate()
 		if(teclaPulsada === KEY.ENTER)
 		{
 			setMap(map01);
-		  spawnDummy();
+		 	spawnDummy();
 			currentScene = 1;
 			vidas = 3;
 			suena = true;
@@ -418,10 +422,10 @@ function powerBehaviour()
 {
 	timeSpawnPowa++;
 	if(timeSpawnPowa > timeToSpawnPowa)
-  {
+	{
 		spawnPower();
-    timeSpawnPowa = 0;
-  }
+	  	timeSpawnPowa = 0;
+	}
 }
 
 function spawnPower()
@@ -517,9 +521,9 @@ function generarExplosion()
 function animacionesBombas()
 {
 	if(bombas.length > 0)
-  {
-    for(var i = 0; i < bombas.length; i++)
-    {
+  	{
+	    for(var i = 0; i < bombas.length; i++)
+	    {
 			if(!bombas[i].explosion)
 			{
 				incrementBombaClip += 0.045;
@@ -548,16 +552,16 @@ function animacionesBombas()
 				}
 				bombas[i].clipX = clipxbombaexplo;
 			}
-    }
-  }
+    	}
+  	}
 }
 
 function colisionesConEnemigo()
 {
 	if(enemigos.length > 0)
-  {
-    for(var i = 0; i < enemigos.length; i++)
-    {
+  	{
+	    for(var i = 0; i < enemigos.length; i++)
+	    {
 			if(enemigos[i].colision(pj) && !pj.powered)
 			{
 				if(!invulnerable)
@@ -565,13 +569,13 @@ function colisionesConEnemigo()
 					recibirDanho();
 				}
 			}
-    }
-  }
+    	}
+  	}
 
 	if(enemigosV2.length > 0)
-  {
-    for(var i = 0; i < enemigosV2.length; i++)
-    {
+  	{
+	    for(var i = 0; i < enemigosV2.length; i++)
+	    {
 			if(enemigosV2[i].colision(pj) && !pj.powered)
 			{
 				if(!invulnerable)
@@ -579,8 +583,8 @@ function colisionesConEnemigo()
 					recibirDanho();
 				}
 			}
-    }
-  }
+    	}
+  	}
 }
 
 function recibirDanho()
@@ -601,53 +605,53 @@ function resetPosJack()
 function movimiento()
 {
   // movimiento en eje X
-  if((presionadas[KEY.D] || presionadas[KEY.ARROW_RIGHT]))
+  	if((presionadas[KEY.D] || presionadas[KEY.ARROW_RIGHT]))
 	{
-    pj.vx = velocidad;
+    	pj.vx = velocidad;
 		pj.dir.x = 1;
 	}
 	else if((presionadas[KEY.A] || presionadas[KEY.ARROW_LEFT]))
 	{
-    pj.vx = -velocidad;
+    	pj.vx = -velocidad;
 		pj.dir.x = -1;
 	}
-  else
-  {
-    pj.vx = 0;
+  	else
+  	{
+    	pj.vx = 0;
 		pj.dir.x = 0;
-  }
+  	}
 
-  pj.x += pj.vx;
-  collX(pj);
+  	pj.x += pj.vx;
+  	collX(pj);
 
-  // movimiento en eje Y
+  	// movimiento en eje Y
 
-  // volar hacia abajo
-  if(!onGround && (presionadas[KEY.S] || presionadas[KEY.ARROW_DOWN]))
-  {
-    pj.vy = caidaPicado;
-  }
-  else
-  {
-    // gravedad
-    pj.vy += gravedad;
-    if(pj.vy >= maxG)
-    {
-      pj.vy = maxG;
-    }
-  }
+  	// volar hacia abajo
+  	if(!onGround && (presionadas[KEY.S] || presionadas[KEY.ARROW_DOWN]))
+  	{
+    	pj.vy = caidaPicado;
+  	}
+ 	else
+  	{
+    	// gravedad
+    	pj.vy += gravedad;
+    	if(pj.vy >= maxG)
+    	{
+      		pj.vy = maxG;
+    	}
+  	}
 
-  // salto
-  if(onGround && (teclaPulsada === KEY.SPACE || teclaPulsada === KEY.W || presionadas[KEY.ARROW_UP]))
-  {
-    pj.vy = -jumpForce;
-  }
+  	// salto
+  	if(onGround && (teclaPulsada === KEY.SPACE || teclaPulsada === KEY.W || presionadas[KEY.ARROW_UP]))
+  	{
+    	pj.vy = -jumpForce;
+  	}
 
-  teclaPulsada = null;
-  onGround = false;
+  	teclaPulsada = null;
+  	onGround = false;
 
-  pj.y += pj.vy;
-  collY(pj);
+  	pj.y += pj.vy;
+  	collY(pj);
 }
 
 function animacionesJack()
@@ -682,7 +686,8 @@ function animacionesJack()
 			jackClipY = 0;
 		}
 	}
-	else {
+	else 
+	{
 		jackClipY = 0;
 	}
 
@@ -707,9 +712,9 @@ function leftRightClipJack()
 function animacionesEnem()
 {
 	if(enemigosV2.length > 0)
-  {
-    for(var i = 0; i < enemigosV2.length; i++)
-    {
+  	{
+	    for(var i = 0; i < enemigosV2.length; i++)
+	    {
 			if(enemigosV2[i].hacked)
 			{
 				enemigosV2[i].clipX = w * 5;
@@ -730,182 +735,182 @@ function animacionesEnem()
 				}
 				enemigosV2[i].clipX = enemV2ClipX;
 			}
-    }
-  }
+    	}
+  	}
 }
 
 function enemyBehaviour()
 {
-
 	timeSpawn++;
 	if(timeSpawn >= timeToSpawn)
-  {
-		if(!pj.powered) spawnDummy();
-    timeSpawn = 0;
-  }
+  	{
+		if(!pj.powered) 
+			spawnDummy();
+    	timeSpawn = 0;
+  	}
 
 	dummyMovement();
 }
 
 function spawnDummy()
 {
-  if(enemCount <= maxEnem)
-  {
-    var rand = ~~(Math.random() * espacio.length);
-    var enem = new Rectangle(espacio[rand].x, espacio[rand].y, w, w, "./img/bombjackX2.png", 0, w * 3, w, w);
-    enem.vy = 0;
-    enem.vx = 0;
+	if(enemCount <= maxEnem)
+	{
+		var rand = ~~(Math.random() * espacio.length);
+		var enem = new Rectangle(espacio[rand].x, espacio[rand].y, w, w, "./img/bombjackX2.png", 0, w * 3, w, w);
+		enem.vy = 0;
+		enem.vx = 0;
 		enem.hacked = false;
-    enemigos.push(enem);
-    enemCount++;
-  }
+	  	enemigos.push(enem);
+	  	enemCount++;
+	}
 }
 
 function dummyMovement()
 {
-  if(enemigos.length > 0)
-  {
-    for(var i = 0; i < enemigos.length; i++)
-    {
+  	if(enemigos.length > 0)
+  	{
+    	for(var i = 0; i < enemigos.length; i++)
+    	{
 			enemigos[i].vy = 1;
-    }
+    	}
 
-    for(var i = 0; i < enemigos.length; i++)
-    {
+	    for(var i = 0; i < enemigos.length; i++)
+	    {
 			if(!enemigos[i].hacked)
 			{
 				enemigos[i].y += enemigos[i].vy;
 			}
-      collY(enemigos[i]);
-    }
-  }
+	  		collY(enemigos[i]);
+	    }
+  	}
 
-  if(enemigosV2.length > 0)
-  {
-    for(var i = 0; i < enemigosV2.length; i++)
-    {
-      if(enemigosV2[i].dir.y != 0)
-      {
+  	if(enemigosV2.length > 0)
+  	{
+    	for(var i = 0; i < enemigosV2.length; i++)
+    	{
+      		if(enemigosV2[i].dir.y != 0)
+      		{
 				if(!enemigosV2[i].hacked)
 				{
 					enemigosV2[i].y += enemigosV2[i].dir.y * enemigosV2[i].vy;
-        }
-        collY(enemigosV2[i]);
-      }
-      else if(enemigosV2[i].dir.x != 0)
-      {
+        		}
+        		collY(enemigosV2[i]);
+      		}
+		    else if(enemigosV2[i].dir.x != 0)
+		    {
 				if(!enemigosV2[i].hacked)
 				{
-        	enemigosV2[i].x += enemigosV2[i].dir.x * enemigosV2[i].vx;
+		      		enemigosV2[i].x += enemigosV2[i].dir.x * enemigosV2[i].vx;
 				}
-        collX(enemigosV2[i]);
-      }
-    }
-  }
+		      	collX(enemigosV2[i]);
+		    }
+    	}
+  	}
 }
 
 function transform(enemigo, i)
 {
-  var enemV2 = new Rectangle(enemigo.x,enemigo.y,w,w, "./img/bombjackX2.png", w, w * 3, w, w);
-  enemV2.vx = 0;
-  enemV2.vy = 0;
+  	var enemV2 = new Rectangle(enemigo.x,enemigo.y,w,w, "./img/bombjackX2.png", w, w * 3, w, w);
+  	enemV2.vx = 0;
+  	enemV2.vy = 0;
 
-  var x = Math.round(Math.random()); // Math.round(Math.random())
-  if(x === 1)
-  {
-    enemV2.vx = 3;
-  }
+  	var x = Math.round(Math.random()); // Math.round(Math.random())
+  	if(x === 1)
+  	{
+    	enemV2.vx = 3;
+  	}
 
-  var y = 0;
-  if(x === 0)
-  {
-    var y = 1;
-    enemV2.vy = 3;
-  }
+  	var y = 0;
+  	if(x === 0)
+  	{
+    	var y = 1;
+    	enemV2.vy = 3;
+  	}
 
-  enemV2.dir = {x:x, y:y};
+  	enemV2.dir = {x:x, y:y};
 	enemV2.hacked = false;
 
-  delete enemigo;
-  enemigos.splice(i--, 1);
+  	delete enemigo;
+  	enemigos.splice(i--, 1);
 
-  enemigosV2.push(enemV2);
+  	enemigosV2.push(enemV2);
 }
 
 function collX(char)
 {
-  for(var i = 0; i < bloques.length; i++)
-  {
-    if(char.colision(bloques[i]))
-    {
-      if(char.vx > 0)
-      {
-        //char.right = bloques[i].x;
-        char.x = bloques[i].x - char.h; // si el personaje toca por la derecha
-        for(var i = 0; i < enemigosV2.length; i++)
-        {
-          if(char === enemigosV2[i])
-            char.vx *= -1;
-        }
-      }
-      else
-      {
-        char.x = bloques[i].right; // si el personaje toca por la izquierda
-        for(var i = 0; i < enemigosV2.length; i++)
-        {
-          if(char === enemigosV2[i])
-            char.vx *= -1;
-        }
-      }
-      // si es un enemigoV2 no usar el char.vx = 0;
-      if(enemigosV2.indexOf(char) === -1)
-      {
-        char.vx = 0;
-      }
-    }
-  }
+ 	for(var i = 0; i < bloques.length; i++)
+  	{
+    	if(char.colision(bloques[i]))
+    	{
+      		if(char.vx > 0)
+      		{
+        		//char.right = bloques[i].x;
+        		char.x = bloques[i].x - char.h; // si el personaje toca por la derecha
+        		for(var i = 0; i < enemigosV2.length; i++)
+        		{
+          			if(char === enemigosV2[i])
+            		char.vx *= -1;
+        		}
+      		}
+      		else
+      		{
+        		char.x = bloques[i].right; // si el personaje toca por la izquierda
+        		for(var i = 0; i < enemigosV2.length; i++)
+        		{
+          			if(char === enemigosV2[i])
+            		char.vx *= -1;
+        		}
+      		}
+      		// si es un enemigoV2 no usar el char.vx = 0;
+      		if(enemigosV2.indexOf(char) === -1)
+      		{
+        		char.vx = 0;
+      		}
+    	}
+  	}
 }
 
 function collY(char)
 {
-  for(var i = 0; i < bloques.length; i++)
-  {
-    if(char.colision(bloques[i]))
-    {
-      if(char.vy > 0)
-      {
-        char.y = bloques[i].y - char.h; // si el personaje toca por abajo
-        for(var i = 0; i < enemigosV2.length; i++)
-        {
-          if(char === enemigosV2[i])
-            char.vy *= -1;
-        }
-        if(char === pj) onGround = true;
-        for(var i = 0; i < enemigos.length; i++)
-        {
-          if(char === enemigos[i])
-          {
-            transform(enemigos[i], i);
-          }
-        }
-      }
-      else
-      {
-        //char.y = bloques[i].y + bloques[i].h;
-        char.y = bloques[i].bottom; // si el personaje toca por arriba
-        for(var i = 0; i < enemigosV2.length; i++)
-        {
-          if(char === enemigosV2[i])
-            char.vy *= -1;
-        }
-      }
+ 	for(var i = 0; i < bloques.length; i++)
+  	{
+    	if(char.colision(bloques[i]))
+    	{
+      		if(char.vy > 0)
+      		{
+        		char.y = bloques[i].y - char.h; // si el personaje toca por abajo
+        		for(var i = 0; i < enemigosV2.length; i++)
+        		{
+          			if(char === enemigosV2[i])
+            			char.vy *= -1;
+        		}
+        		if(char === pj) onGround = true;
+        		for(var i = 0; i < enemigos.length; i++)
+        		{
+          			if(char === enemigos[i])
+          			{
+            			transform(enemigos[i], i);
+          			}
+        		}
+      		}
+      		else
+     		{
+	        	//char.y = bloques[i].y + bloques[i].h;
+	        	char.y = bloques[i].bottom; // si el personaje toca por arriba
+	        	for(var i = 0; i < enemigosV2.length; i++)
+		        {
+	          		if(char === enemigosV2[i])
+	            	char.vy *= -1;
+	        	}
+      		}
 
-      if(enemigosV2.indexOf(char) === -1)
-      {
-        char.vy = 0;
-      }
-    }
-  }
+      		if(enemigosV2.indexOf(char) === -1)
+      		{
+        		char.vy = 0;
+      		}
+    	}
+  	}
 }
 
 var pj;
