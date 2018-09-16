@@ -59,47 +59,47 @@ function setMap(map)
 		        	bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", 0, w * 6, w, w));
 		        break;
 
-				case 2: // Marco Vertical Izq
-					bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w, w * 6, w, w));
-				break;
+                case 2: // Marco Vertical Izq
+                    bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w, w * 6, w, w));
+                break;
+                
+                case 4: // Marco Vertical Der
+                    bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 7, w * 6, w, w));
+                break;
+                
+                case 10: // Marco Horizontal Inf
+                    bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 6, w * 6, w, w));
+                break;
 
-				case 4: // Marco Vertical Der
-					bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 7, w * 6, w, w));
-				break;
-
-				case 10: // Marco Horizontal Inf
-					bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 6, w * 6, w, w));
-				break;
-
-		        case 3: // Bombas
-		          bombas.push(new Rectangle(64 + j * w,64 +  i * w, w, w, "./img/bombjackX2.png", w, w * 4, w, w));
-		        break;
+                case 3: // Bombas
+                  bombas.push(new Rectangle(64 + j * w,64 +  i * w, w, w, "./img/bombjackX2.png", w, w * 4, w, w));
+                break;
 
 				case 5: // Jack
-			    	pj = new Rectangle(64 + j * w, 64 + i * w, w - 1, w - 1, "./img/bombjackX2.png", jackClipX, jackClipY, w, w);
-			    	posReset = {x: 64 + j * w, y: 64 + i * w};
-			    	pj.vx = 0;
-			    	pj.vy = 0;
-			    	pj.dir = {x:0, y:0};
+					pj = new Rectangle(64 + j * w, 64 + i * w, w - 1, w - 1, "./img/bombjackX2.png", jackClipX, jackClipY, w, w);
+					posReset = {x: 64 + j * w, y: 64 + i * w};
+					pj.vx = 0;
+					pj.vy = 0;
+					pj.dir = {x:0, y:0};
 					pj.powered = false;
-		        break;
-
-				case 6: // Esquina Inferior Izq
-					bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 2, w * 6, w, w));
 				break;
-
-				case 7: // Esquina Superior Izq
-					bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 4, w * 6, w, w));
-				break;
-
-				case 8: // Esquina Superior Der
-					bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 5, w * 6, w, w));
-				break;
-
-				case 9: // Esquina Inferior Der
-					bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 3, w * 6, w, w));
-				break;
-		    }
+                
+                case 6: // Esquina Inferior Izq
+                	bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 2, w * 6, w, w));
+                break;
+                
+                case 7: // Esquina Superior Izq
+                	bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 4, w * 6, w, w));
+                break;
+                
+                case 8: // Esquina Superior Der
+                	bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 5, w * 6, w, w));
+                break;
+                
+                case 9: // Esquina Inferior Der
+                	bloques.push(new Rectangle(64 + j * w, 64 + i * w, w, w, "./img/bombjackX2.png", w * 3, w * 6, w, w));
+                break;
+            }
 		}
 	}
 
